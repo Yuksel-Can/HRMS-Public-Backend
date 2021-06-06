@@ -13,9 +13,16 @@ public class eMailValidation {
 		return pattern.matcher(trueMail).find();
 	}
 	*/
-	private static final String EMAIL_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+.(com|org|net|edu|gov|mil|biz|info|mobi)(.[A-Z]{2})?$";
+	//private String EMAIL_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+.(com|org|net|edu|gov|mil|biz|info|mobi)(.[A-Z]{2})?$";
 		
-	public static boolean isReal(String email) {
+	public static boolean isRealUser(String email) {
+		String EMAIL_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+.(com|org|net|edu|gov|mil|biz|info|mobi)(.[A-Z]{2})?$";
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN, Pattern.CASE_INSENSITIVE);
+		return pattern.matcher(email).find();
+	}
+	public static boolean isRealCompany(String email, String webAddress) {
+		//String EMAIL_PATTERN = "^[A-Z0-9._%+-]" + "@"+ webAddress.trim();// + "+$";
+		String EMAIL_PATTERN	= "@"+webAddress.trim()+"";
 		Pattern pattern = Pattern.compile(EMAIL_PATTERN, Pattern.CASE_INSENSITIVE);
 		return pattern.matcher(email).find();
 	}

@@ -58,7 +58,7 @@ public class CandidateManager implements CandidateService {
 		if(!eMailisEmpty(candidate)) {
 			return new ErrorDataResult<Candidate>(candidate,"E Mail Boş Bırakılamaz");
 		}
-		if(!eMailValidation.isReal(candidate.getEmail())) {
+		if(!eMailValidation.isRealUser(candidate.getEmail())) {
 			return new ErrorDataResult<Candidate>(candidate,"Geçersiz E Mail Girilemez");
 		}
 		if(!passwordisEmpty(candidate)) {
@@ -72,21 +72,26 @@ public class CandidateManager implements CandidateService {
 		}
 		// to-do = mail'lerde sadece dogrulanmış olanların kontrolü yapılmalıdır.
 
-		//to-do = son tekrar kontrolü kaldı
+		//to-do = pass son tekrar kontrolü kaldı
 		
 		if(!FakeMernis.isValidate(Long.parseLong(candidate.getIdentificationNumber()), candidate.getFirstName(), candidate.getLastName(), 1998)){
 			return new ErrorDataResult<Candidate>(candidate,"Uyuşmayan Kişisel Bilgiler-Kimlik Doğrulanamadı");
 		}
 
 		
-		//**//
-		User userAdded = this.userService.add(candidate);
+		//***//
+		//User userAdded = this.userService.add(candidate);
+		this.userService.add(candidate);
+
 		if(!this.emailVerificationService.generate(candidate, new EmailVerification())) {
 			return new ErrorDataResult<Candidate>(candidate, " Email Doğrulama Kodu Oluşturulurken Hata Oluştu");
 		}
+		
 		this.candidatoDao.save(candidate);
+		
 		return new SuccessDataResult<Candidate>(candidate, " Aday Ekleme İşlemi Başarılı, Doğrulama Kodu Gönderildi");
-		//**//
+		//***//
+		
 	}
 
 
