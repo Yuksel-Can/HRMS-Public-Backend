@@ -24,7 +24,7 @@ public class CandidatesController {
 		this.candidateService = candidateService;
 	}
 	
-	@GetMapping("/getall2")
+	@GetMapping("/getall")
 	public DataResult<List<Candidate>> getAll(){
 		return candidateService.getAll();
 	}
