@@ -2,6 +2,7 @@ package com.kodlama.io.hrmsPublic.entities.concrete;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.kodlama.io.hrmsPublic.entities.abstracts.User;
@@ -17,6 +18,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="employees")
+@PrimaryKeyJoinColumn (name=" id")
+
 public class Employee extends User{
 	
 	@Column(name = "firstname")

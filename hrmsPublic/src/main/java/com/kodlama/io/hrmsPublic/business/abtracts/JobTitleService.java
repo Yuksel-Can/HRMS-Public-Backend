@@ -9,4 +9,6 @@ public interface JobTitleService {
 
 	DataResult<List<JobTitle>> getAll();
 	DataResult<JobTitle> add(JobTitle jobTitle);
+	DataResult<JobTitle> findById(int id);
+
 }

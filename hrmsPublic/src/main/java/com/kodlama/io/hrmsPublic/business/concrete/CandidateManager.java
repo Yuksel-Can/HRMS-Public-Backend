@@ -79,8 +79,19 @@ public class CandidateManager implements CandidateService {
 		}
 
 		
+		
+		
+		
+		this.candidatoDao.save(candidate);
+		
+		if(!this.emailVerificationService.generate(candidate, new EmailVerification())) {
+			return new ErrorDataResult<Candidate>(candidate, " Email Doğrulama Kodu Oluşturulurken Hata Oluştu");
+		}
+		return new SuccessDataResult<Candidate>(candidate, " Aday Ekleme İşlemi Başarılı, Doğrulama Kodu Gönderildi");
+
 		//***//
 		//User userAdded = this.userService.add(candidate);
+		/*
 		this.userService.add(candidate);
 
 		if(!this.emailVerificationService.generate(candidate, new EmailVerification())) {
@@ -89,7 +100,7 @@ public class CandidateManager implements CandidateService {
 		
 		this.candidatoDao.save(candidate);
 		
-		return new SuccessDataResult<Candidate>(candidate, " Aday Ekleme İşlemi Başarılı, Doğrulama Kodu Gönderildi");
+		*/
 		//***//
 		
 	}

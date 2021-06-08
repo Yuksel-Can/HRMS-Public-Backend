@@ -14,6 +14,7 @@ import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.ErrorDataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessDataResult;
 import com.kodlama.io.hrmsPublic.dataAccess.abstracts.EmployerDao;
+import com.kodlama.io.hrmsPublic.entities.concrete.Candidate;
 import com.kodlama.io.hrmsPublic.entities.concrete.EmailVerification;
 import com.kodlama.io.hrmsPublic.entities.concrete.Employer;
 
@@ -56,6 +57,10 @@ public class EmployerManager implements EmployerService{
 		if(!phoneNumberisEmpty(employer)) {
 			return new ErrorDataResult<Employer>(employer,"Telefon Alanı Olamaz");
 		}
+		if(!eMailValidation.isRealUser(employer.getEmail())) {
+			return new ErrorDataResult<Employer>(employer,"Geçersiz E Mail Girilemez");
+		}
+		
 		if(this.employerDao.findAllByEmail(employer.getEmail()).stream().count() != 0){
 			return new ErrorDataResult<Employer>(employer, "Bu Mail Adresi Daha Önce Kayıt Edilmiş");
 		}
@@ -70,8 +75,14 @@ public class EmployerManager implements EmployerService{
 		
 		
 		
+		this.employerDao.save(employer);
+		if(!this.emailVerificationService.generate(employer, new EmailVerification())) {
+			return new ErrorDataResult<Employer>(employer, "Email Doğrulama Kodu Oluşturulurken Hata Oluştu");
+		}
+		return new SuccessDataResult<Employer>(employer, "İş veren Ekleme Başarılı, Doğrulama Kodu Gönderildi");
+
 		//***//
-		
+		/*
 		this.userService.add(employer);
 		
 		if(!this.emailVerificationService.generate(employer, new EmailVerification())) {
@@ -81,7 +92,7 @@ public class EmployerManager implements EmployerService{
 		this.employerDao.save(employer);
 		
 		return new SuccessDataResult<Employer>(employer, "İş veren Ekleme Başarılı, Doğrulama Kodu Gönderildi");
-		
+		*/
 		//***//
 	}
 
@@ -117,13 +128,13 @@ public class EmployerManager implements EmployerService{
 		return true;
 	}
 	private boolean phoneNumberisValid(Employer employer) {
-		if((employer.getPhoneNumber().length() != 11) || (employer.getPhoneNumber().length() != 10)){
-			return false;
+		if((employer.getPhoneNumber().length() == 11) || (employer.getPhoneNumber().length() == 10)){
+			String truePhone =  "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$" 
+				      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?){2}\\d{3}$" 
+				      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$";
+			Pattern pattern = Pattern.compile(truePhone);
+			return pattern.matcher(employer.getPhoneNumber()).find();
 		}
-		String truePhone =  "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$" 
-			      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?){2}\\d{3}$" 
-			      + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$";
-		Pattern pattern = Pattern.compile(truePhone);
-		return pattern.matcher(employer.getPhoneNumber()).find();
+		return false;
 	}
 }

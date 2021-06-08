@@ -40,6 +40,11 @@ public class JobTitleManager implements JobTitleService{
 		return new SuccessDataResult<JobTitle>(jobTitleDao.save(jobTitle), "Yeni iş pozisyonu eklendi");
 	}
 	
+	@Override
+	public DataResult<JobTitle> findById(int id) {
+		
+		return new SuccessDataResult<JobTitle>(jobTitleDao.findById(id)," İş ilanı başarılı bir şekilde listelendi");
+	}
 	
 	
 	public boolean JobTitleValid(String title) {

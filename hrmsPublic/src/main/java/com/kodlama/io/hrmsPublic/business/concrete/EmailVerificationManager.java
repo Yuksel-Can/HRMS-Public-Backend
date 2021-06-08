@@ -27,7 +27,7 @@ public class EmailVerificationManager implements EmailVerificationService{
 		try {
 			emailVerification.setCode(GenerateRandomCode.generate());
 			emailVerification.setVerified(false);
-			emailVerification.setUserId(user.getId());
+			emailVerification.setUserId(user);  
 			emailVerificationDao.save(emailVerification);
 			return true;
 		} catch (Exception e) {
