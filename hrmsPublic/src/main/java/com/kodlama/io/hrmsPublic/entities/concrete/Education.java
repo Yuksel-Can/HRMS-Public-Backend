@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.repository.Temporal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,8 +32,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="educations")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","edu"})		
+@Table(name="educations")	
 public class Education {
 
 	@Id
@@ -40,10 +40,11 @@ public class Education {
 	@Column(name="id")
 	private int id;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)	//sadece yazarken getirir bu sutunu yani add yaoarken getirir
-	@ManyToOne(targetEntity=Resume.class, fetch = FetchType.LAZY,optional = false)
-	@JoinColumn(name="resume_id", referencedColumnName="id", nullable=false)		//bağlanacakları kısmı belirtiyor
+	//@JsonProperty(access = Access.WRITE_ONLY)	//sadece yazarken getirir bu sutunu yani add yaoarken getirir
+	@ManyToOne(targetEntity = Resume.class)
+	@JoinColumn(name="resume_id" )		//bağlanacakları kısmı belirtiyor
 	private Resume resume;
+	
 	
 	/* Önemli */
 	@ManyToOne(targetEntity=EducationLevel.class, fetch = FetchType.LAZY,optional = false)
@@ -58,21 +59,24 @@ public class Education {
 	
 	@Column(name="department_name")
 	private String departmentName;
-	
+
+	//@NotBlank(message="Boş geçilemez")		//notnull yaparsak çalışmadı
 	@Column(name="started_date")
-	@NotBlank(message="Boş geçilemez")
 	private Date startedDate;
+	
 	
 	@Column(name="ended_date")
 	private Date endedDate;
 
 	//@Temporal			//kayıt oluştururkenki tarih ve saati kendisi yazıyor
-	@NotBlank(message="Boş geçilemez")
+	
 	@CreationTimestamp
-	//@JsonIgnore
+	@JsonIgnore
 	@Column(name="created_date")
 	private Date createdDate;
 	
+	@UpdateTimestamp
+	@JsonIgnore
 	@Column(name="update_date")
 	private Date updateDate;
 }

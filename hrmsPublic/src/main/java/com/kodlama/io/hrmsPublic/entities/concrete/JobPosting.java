@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -57,7 +59,8 @@ public class JobPosting {
 	@Column(name="open_position")
 	private int openPosition;
 	
-	//@JsonIgnore
+	@JsonIgnore
+	@CreationTimestamp
 	@Column(name="started_date")
 	private Date startedDate;
 	

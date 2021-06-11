@@ -32,7 +32,7 @@ public class JobExperiencesController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody JobExperience jobExperience) {
+	public Result add(@RequestBody JobExperience jobExperience) {
 		return this.jobExperienceService.add(jobExperience);
 		
 	}

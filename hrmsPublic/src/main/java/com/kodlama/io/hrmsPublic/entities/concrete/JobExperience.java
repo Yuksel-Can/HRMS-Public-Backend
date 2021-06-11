@@ -19,6 +19,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.repository.Temporal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -54,6 +56,7 @@ public class JobExperience {
 	//@Temporal(TemporalType.DATE)		//ikiside oluyor		//util.date den alınır
 	//@CreationTimestamp				//ikiide oluyor
 
+	
 	@NotBlank(message="Boş geçilemez")
 	@Column(name="started_date")
 	private Date startedDate;		//date i java sql den almak zorundasın
@@ -61,12 +64,13 @@ public class JobExperience {
 	@Column(name="ended_date")
 	private Date endedDate;	
 	
-	//@UpdateTimestamp					//update için kullanılıyor
-	//@CreationTimestamp
+	@CreationTimestamp
+	@JsonIgnore
 	@Column(name="created_date")
 	private Date createdDate;
 	
-	//@UpdateTimestamp
+	@UpdateTimestamp
+	@JsonIgnore
 	@Column(name="update_date")
 	private Date updateDate;
 }

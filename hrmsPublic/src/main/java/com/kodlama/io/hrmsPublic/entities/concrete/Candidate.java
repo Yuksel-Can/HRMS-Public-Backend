@@ -1,15 +1,18 @@
 package com.kodlama.io.hrmsPublic.entities.concrete;
 
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kodlama.io.hrmsPublic.entities.abstracts.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -44,5 +47,7 @@ public class Candidate  extends User{
 	@Column(name = "birth_date")
 	private Date birthDate;  
 	
-	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<Resume> resumes;
 }

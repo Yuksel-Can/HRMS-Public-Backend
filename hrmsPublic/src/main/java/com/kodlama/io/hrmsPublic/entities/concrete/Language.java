@@ -13,6 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,11 +46,13 @@ public class Language {
 	@Column(name="language_level")
 	private char languageLevel;
 	
-
-	@NotBlank(message="Boş geçilemez")
+	@CreationTimestamp
+	@JsonIgnore
 	@Column(name="created_date")
 	private Date createdDate;
 	
+	@UpdateTimestamp
+	@JsonIgnore
 	@Column(name="update_date")
 	private Date updateDate;
 }

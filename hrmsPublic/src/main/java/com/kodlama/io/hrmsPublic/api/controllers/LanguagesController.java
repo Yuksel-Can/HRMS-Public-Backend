@@ -32,7 +32,7 @@ public class LanguagesController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody Language language) {
+	public Result add(@RequestBody Language language) {
 		return this.languageService.add(language);
 		
 	}

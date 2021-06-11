@@ -11,4 +11,14 @@ public interface EducationService {
 	Result add(Education education);
 	
 	DataResult<List<Education>> getAll();
+	//DataResult<List<Education>> getById(int id);
+//	DataResult<List<Education>> findAllByResume_ResumeId(int id);
+
+	//DataResult<List<Education>> findAllByResumeIdOrderByEndedDateDesc(int id);
+	//DataResult<List<Education>> getEducationOrderByEndedDateDESC(int id);
+	//DataResult<List<Education>> orderCvEducationsByGraduationYearDesc(int id);
+
+	DataResult<List<Education>> namesEducation(int id);
+	DataResult<List<Education>> namesEducation2(int id);
+
 }
