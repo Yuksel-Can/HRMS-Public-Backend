@@ -11,31 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kodlama.io.hrmsPublic.business.abtracts.ResumeService;
+import com.kodlama.io.hrmsPublic.business.abtracts.EducationLevelService;
 import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
-import com.kodlama.io.hrmsPublic.entities.concrete.Resume;
+import com.kodlama.io.hrmsPublic.entities.concrete.EducationLevel;
 
 @RestController
-@RequestMapping("/api/resume")
-public class ResumesController {
+@RequestMapping("/api/educationlevel")
+public class EducationLevelsController {
 
-	private ResumeService resumeService;
+	private EducationLevelService educationLevelService;
+	
 	
 	@Autowired
-	public ResumesController(ResumeService resumeService) {
-		super();
-		this.resumeService = resumeService;
+	public EducationLevelsController(EducationLevelService educationLevelService) {
+		this.educationLevelService = educationLevelService;
 	}
 
+
+
 	@GetMapping("/getall")
-	public DataResult<List<Resume>> getAll(){
-		return this.resumeService.getAll();
+	public DataResult<List<EducationLevel>> getAll(){
+		return this.educationLevelService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody Resume resume) {
-		return this.resumeService.add(resume);
-		
+	public Result add(@Valid @RequestBody EducationLevel educationLevel) {
+		return this.educationLevelService.add(educationLevel);
 	}
+	
 }

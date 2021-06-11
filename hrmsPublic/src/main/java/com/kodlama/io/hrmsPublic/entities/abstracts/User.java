@@ -13,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -26,7 +27,8 @@ import lombok.NoArgsConstructor;
 //@AllArgsConstructor		//uer kısmına constructor koymamak önemli
 //@NoArgsConstructor
 
-@Inheritance(strategy =InheritanceType.JOINED)
+@Inheritance(strategy =InheritanceType.JOINED)	
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})		
 
 public abstract class User {
 

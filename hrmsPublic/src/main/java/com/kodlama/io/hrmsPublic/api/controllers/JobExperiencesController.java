@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.kodlama.io.hrmsPublic.business.abtracts.ResumeService;
+import com.kodlama.io.hrmsPublic.business.abtracts.JobExperienceService;
 import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
-import com.kodlama.io.hrmsPublic.entities.concrete.Resume;
+import com.kodlama.io.hrmsPublic.entities.concrete.JobExperience;
 
 @RestController
-@RequestMapping("/api/resume")
-public class ResumesController {
+@RequestMapping("/api/jobexperience")
+public class JobExperiencesController {
 
-	private ResumeService resumeService;
+	private JobExperienceService jobExperienceService;
 	
 	@Autowired
-	public ResumesController(ResumeService resumeService) {
-		super();
-		this.resumeService = resumeService;
+	public JobExperiencesController(JobExperienceService jobExperienceService) {
+		this.jobExperienceService = jobExperienceService;
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<Resume>> getAll(){
-		return this.resumeService.getAll();
+	public DataResult<List<JobExperience>> getAll(){
+		return this.jobExperienceService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody Resume resume) {
-		return this.resumeService.add(resume);
+	public Result add(@Valid @RequestBody JobExperience jobExperience) {
+		return this.jobExperienceService.add(jobExperience);
 		
 	}
+	
+	
 }

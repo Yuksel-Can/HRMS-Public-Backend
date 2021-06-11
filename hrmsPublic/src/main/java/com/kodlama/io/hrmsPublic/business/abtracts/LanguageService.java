@@ -4,11 +4,10 @@ import java.util.List;
 
 import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
-import com.kodlama.io.hrmsPublic.entities.concrete.Education;
+import com.kodlama.io.hrmsPublic.entities.concrete.Language;
 
-public interface EducationService {
+public interface LanguageService {
 
-	Result add(Education education);
-	
-	DataResult<List<Education>> getAll();
+	Result add(Language language);
+	DataResult<List<Language>> getAll();
 }
