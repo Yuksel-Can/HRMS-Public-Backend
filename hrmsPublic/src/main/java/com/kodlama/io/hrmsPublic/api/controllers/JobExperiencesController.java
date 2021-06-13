@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.kodlama.io.hrmsPublic.business.abtracts.JobExperienceService;
 import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
+import com.kodlama.io.hrmsPublic.dtos.JobExperienceWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.JobExperience;
 
 @RestController
@@ -37,5 +39,8 @@ public class JobExperiencesController {
 		
 	}
 	
-	
+	@GetMapping("/getJobExperienceDetailsWithResumeOrderByDesc")
+	public DataResult<List<JobExperienceWithResumeDto>> getJobExperienceDetailsWithResumeOrderByDesc(@RequestParam int id){
+		return this.jobExperienceService.getJobExperienceDetailsWithResumeOrderByDesc(id);
+	}
 }

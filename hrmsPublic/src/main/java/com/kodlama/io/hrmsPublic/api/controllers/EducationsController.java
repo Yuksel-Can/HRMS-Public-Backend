@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kodlama.io.hrmsPublic.business.abtracts.EducationService;
 import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
+import com.kodlama.io.hrmsPublic.dtos.EducationWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.Education;
 
 @RestController
@@ -60,5 +61,10 @@ public class EducationsController {
 	@GetMapping("/getnames2")
 	public DataResult<List<Education>> namesEducation2(@RequestParam int id){
 		return this.educationService.namesEducation2(id);
+	}
+
+	@GetMapping("/getEducationWithResume")
+	public DataResult<List<EducationWithResumeDto>> getEducationDetailsWithResumeOrderByDesc(@RequestParam int id){
+		return this.educationService.getEducationDetailsWithResumeOrderByDesc(id);
 	}
 }

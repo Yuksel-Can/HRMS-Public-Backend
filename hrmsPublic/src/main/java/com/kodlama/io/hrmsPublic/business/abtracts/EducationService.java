@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kodlama.io.hrmsPublic.core.utilities.results.DataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
+import com.kodlama.io.hrmsPublic.dtos.EducationWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.Education;
 
 public interface EducationService {
@@ -20,5 +21,7 @@ public interface EducationService {
 
 	DataResult<List<Education>> namesEducation(int id);
 	DataResult<List<Education>> namesEducation2(int id);
+
+	DataResult<List<EducationWithResumeDto>> getEducationDetailsWithResumeOrderByDesc(int id);
 
 }

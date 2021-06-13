@@ -13,6 +13,7 @@ import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessDataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessResult;
 import com.kodlama.io.hrmsPublic.dataAccess.abstracts.EducationDao;
 import com.kodlama.io.hrmsPublic.dataAccess.abstracts.ResumeDao;
+import com.kodlama.io.hrmsPublic.dtos.EducationWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.Education;
 
 @Service
@@ -85,5 +86,10 @@ public class EducationManager  implements EducationService{
 	@Override
 	public DataResult<List<Education>> namesEducation2(int id) {
 		return new SuccessDataResult<List<Education>>(this.educationDao.namesEducation2(id),"Tersten listelendi)");
+	}
+
+	@Override
+	public DataResult<List<EducationWithResumeDto>> getEducationDetailsWithResumeOrderByDesc(int id) {
+		return new SuccessDataResult<List<EducationWithResumeDto>>(this.educationDao.getEducationDetailsWithResumeOrderByDesc(id),"Listelendi");
 	}
 }

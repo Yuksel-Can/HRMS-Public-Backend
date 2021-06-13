@@ -12,6 +12,7 @@ import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessDataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessResult;
 import com.kodlama.io.hrmsPublic.dataAccess.abstracts.JobExperienceDao;
+import com.kodlama.io.hrmsPublic.dtos.JobExperienceWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.JobExperience;
 
 @Service
@@ -33,6 +34,11 @@ public class JobExperienceManager implements JobExperienceService{
 	@Override
 	public DataResult<List<JobExperience>> getAll() {
 		return new SuccessDataResult<List<JobExperience>>(this.jobExperienceDao.findAll(), "Tüm yetenekler listelendi");
+	}
+
+	@Override
+	public DataResult<List<JobExperienceWithResumeDto>> getJobExperienceDetailsWithResumeOrderByDesc(int id) {
+		return new SuccessDataResult<List<JobExperienceWithResumeDto>>(this.jobExperienceDao.getJobExperienceDetailsWithResumeOrderByDesc(id));
 	}
 	
 	
