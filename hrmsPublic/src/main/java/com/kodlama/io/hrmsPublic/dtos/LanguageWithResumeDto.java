@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TechnologyWithResumeDto {
+public class LanguageWithResumeDto {
 
-	private int id;	//user id
-	private String technologyName;
+	private int id; 	//user id
+	private String languageName;
+	private char languageLevel;
 	private Date updateDate;
 
 }

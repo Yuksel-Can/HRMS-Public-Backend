@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
+
+import com.kodlama.io.hrmsPublic.entities.concrete.EducationLevel;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +19,7 @@ public class EducationWithResumeDto {
 	private String schoolName;
 
 	private String departmentName;
-	//private String levelName;
+	private String levelName;
 	private Date startedDate;
 	private Date endedDate;
 	private Date updateDate;

@@ -63,8 +63,8 @@ public class EducationsController {
 		return this.educationService.namesEducation2(id);
 	}
 
-	@GetMapping("/getEducationWithResume")
-	public DataResult<List<EducationWithResumeDto>> getEducationDetailsWithResumeOrderByDesc(@RequestParam int id){
+	@GetMapping("/getEducationWithResumeId")
+	public DataResult<List<EducationWithResumeDto>> getEducationDetailsWithResumeIdOrderByDesc(@RequestParam int id){
 		return this.educationService.getEducationDetailsWithResumeOrderByDesc(id);
 	}
 }

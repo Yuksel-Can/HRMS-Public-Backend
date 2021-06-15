@@ -11,6 +11,7 @@ import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessDataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessResult;
 import com.kodlama.io.hrmsPublic.dataAccess.abstracts.LanguageDao;
+import com.kodlama.io.hrmsPublic.dtos.LanguageWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.Language;
 
 @Service
@@ -32,6 +33,11 @@ public class LanguageManager implements LanguageService{
 	@Override
 	public DataResult<List<Language>> getAll() {
 		return new SuccessDataResult<List<Language>>(this.languageDao.findAll(), "Tüm diller listelendi");
+	}
+
+	@Override
+	public DataResult<List<LanguageWithResumeDto>> getLanguageDetailsWithResumeIdOrderByDesc(int id) {
+		return new SuccessDataResult<List<LanguageWithResumeDto>>(this.languageDao.getLanguageDetailsWithResumeIdOrderByDesc(id), "Kullanıcının bildiği diller listelendi");
 	}
 
 	

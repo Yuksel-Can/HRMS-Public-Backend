@@ -11,4 +11,7 @@ public interface ResumeService {
 	Result add(Resume resume);
 	DataResult<List<Resume>> getAll();
 	
+	DataResult<List<Resume>> getResumeWithUserId(int id);
+
+	
 }

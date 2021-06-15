@@ -13,6 +13,6 @@ import com.kodlama.io.hrmsPublic.entities.concrete.JobExperience;
 public interface JobExperienceDao extends JpaRepository<JobExperience, Integer>{
 	
 	
-	@Query("Select new com.kodlama.io.hrmsPublic.dtos.JobExperienceWithResumeDto(r.id, j.companyName, j.positionName, j.startedDate, j.endedDate, j.updateDate) From Resume r Inner Join r.jobExperiences j where r.id =:id order by j.endedDate desc")
+	@Query("Select new com.kodlama.io.hrmsPublic.dtos.JobExperienceWithResumeDto(r.id, j.companyName, j.positionName, j.startedDate, j.endedDate, j.updateDate) From Resume r Inner Join r.jobExperiences j where r.candidate.id =:id order by j.endedDate desc")
 	List<JobExperienceWithResumeDto> getJobExperienceDetailsWithResumeOrderByDesc(int id);
 }

@@ -11,6 +11,8 @@ import com.kodlama.io.hrmsPublic.core.utilities.results.Result;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessDataResult;
 import com.kodlama.io.hrmsPublic.core.utilities.results.SuccessResult;
 import com.kodlama.io.hrmsPublic.dataAccess.abstracts.TechnologyDao;
+import com.kodlama.io.hrmsPublic.dtos.JobExperienceWithResumeDto;
+import com.kodlama.io.hrmsPublic.dtos.TechnologyWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.Technology;
 
 @Service
@@ -31,6 +33,10 @@ public class TechnologyManager implements TechnologyService{
 	@Override
 	public DataResult<List<Technology>> getAll() {
 		return new SuccessDataResult<List<Technology>>(this.technologyDao.findAll(), "Tüm dil/teknolojiler listelendi");
+	}
+	@Override
+	public DataResult<List<TechnologyWithResumeDto>> getJobExperienceDetailsWithResumeOrderByDesc(int id) {
+		return new SuccessDataResult<List<TechnologyWithResumeDto>>(this.technologyDao.getTechnologyDetailsWithResumeIdOrderByDesc(id), "Kullanıcının bildiği Programlama dilleri ve tenolojileri listelendi");
 	}
 
 }

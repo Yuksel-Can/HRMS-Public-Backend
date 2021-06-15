@@ -32,6 +32,10 @@ public class ResumeManager implements ResumeService{
 
 		return new SuccessDataResult<List<Resume>>(this.resumeDao.findAll()	, "Tüm Cv'ler Listelendi");
 	}
+	@Override
+	public DataResult<List<Resume>> getResumeWithUserId(int id) {
+		return new SuccessDataResult<List<Resume>>(this.resumeDao.getResumeWithUserId(id)	, "Adaya ait  Cv'ler Listelendi");
+	}
 
 	
 }
