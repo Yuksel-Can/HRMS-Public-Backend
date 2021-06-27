@@ -68,8 +68,13 @@ public class JobPosting {
 	@Column(name="ended_date")
 	private Date endedDate;
 	
-	@JsonIgnore
+	
 	@Column(name="is_visible")
 	private boolean isVisible=false;
+	
+	//update project ( way of working added)
+	@NotBlank(message ="Çalışma biçimi boş bırakılamaz")
+	@Column(name="way_of_working")
+	private String wayOfWorking;
 
 }

@@ -12,6 +12,6 @@ public interface TechnologyService {
 
 	Result add(Technology technology);
 	DataResult<List<Technology>> getAll();
-	DataResult<List<TechnologyWithResumeDto>> getJobExperienceDetailsWithResumeOrderByDesc(int id);
+	DataResult<List<TechnologyWithResumeDto>> getTechnologyDetailsWithResumeIdOrderByDesc(int id);
 
 }

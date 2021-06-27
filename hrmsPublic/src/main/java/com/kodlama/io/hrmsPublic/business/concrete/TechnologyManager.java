@@ -35,7 +35,7 @@ public class TechnologyManager implements TechnologyService{
 		return new SuccessDataResult<List<Technology>>(this.technologyDao.findAll(), "Tüm dil/teknolojiler listelendi");
 	}
 	@Override
-	public DataResult<List<TechnologyWithResumeDto>> getJobExperienceDetailsWithResumeOrderByDesc(int id) {
+	public DataResult<List<TechnologyWithResumeDto>> getTechnologyDetailsWithResumeIdOrderByDesc(int id) {
 		return new SuccessDataResult<List<TechnologyWithResumeDto>>(this.technologyDao.getTechnologyDetailsWithResumeIdOrderByDesc(id), "Kullanıcının bildiği Programlama dilleri ve tenolojileri listelendi");
 	}
 

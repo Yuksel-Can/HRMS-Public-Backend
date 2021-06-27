@@ -26,8 +26,8 @@ public interface EducationDao extends JpaRepository<Education, Integer>{
 	//@Query("Select new kodlamaio.northwind.entities.dtos.ProductWithCategoryDto(p.id, p.productName, c.categoryName) From Category c Inner Join c.products p")
 	//on koşulu jpql de yazılması gerekmiyor
 	//@Query("Select new com.kodlama.io.hrmsPublic.dtos.EducationWithResumeDto(e.id, e.schoolName, e.departmentName, e.startedDate, e.endedDate, e.updateDate) From Resume r Inner Join r.educations e")
-	@Query("Select new com.kodlama.io.hrmsPublic.dtos.EducationWithResumeDto(r.id, e.schoolName, e.departmentName, e.educationLevel.levelName, e.startedDate, e.endedDate, e.updateDate) From Resume r Inner Join r.educations e where r.candidate.id =:id order by e.endedDate desc")
 
+	@Query("Select new com.kodlama.io.hrmsPublic.dtos.EducationWithResumeDto(r.id, e.schoolName, e.departmentName, e.educationLevel.levelName, e.startedDate, e.endedDate, e.updateDate) From Resume r Inner Join r.educations e where r.candidate.id =:id order by e.endedDate desc")
 	List<EducationWithResumeDto> getEducationDetailsWithResumeOrderByDesc(int id);
 	
 	

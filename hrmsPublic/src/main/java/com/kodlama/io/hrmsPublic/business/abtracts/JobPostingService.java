@@ -10,12 +10,13 @@ public interface JobPostingService {
 
 	DataResult<List<JobPosting>> getAll();
 	DataResult<JobPosting> add(JobPosting jobPosting);
-	DataResult<List<JobPosting>> getAllSortedByAndDate();
+	DataResult<List<JobPosting>> getAllSortedByAndDateDESC();
+	DataResult<List<JobPosting>> getAllSortedByAndDateASC();
 	DataResult<List<JobPosting>> findByIsVisibleAndEmployer(String companyName);
 	DataResult<List<JobPosting>> findByIsVisible();
+	//DataResult<List<JobPosting>> findByOrderByEndedDateAscAndIsVisible();
 	
 	Result isVisibleClose(int id, int employerId);
-	/*
-	JobPosting findByIdAndEmployer_id(int id, int EmployerId);
-	*/
+	
+	 DataResult<List<JobPosting>> findByIsVisibleAndWayOfWorking(String wayOfWorking);
 }

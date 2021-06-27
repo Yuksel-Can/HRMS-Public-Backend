@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import com.kodlama.io.hrmsPublic.dtos.TechnologyWithResumeDto;
 import com.kodlama.io.hrmsPublic.entities.concrete.Language;
 import com.kodlama.io.hrmsPublic.entities.concrete.Technology;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/technology")
 public class TechnologysController {
@@ -42,8 +44,8 @@ public class TechnologysController {
 		
 	}
 
-	@GetMapping("/getJobExperienceDetailsWithResumeOrderByDesc")
-	public DataResult<List<TechnologyWithResumeDto>> getJobExperienceDetailsWithResumeOrderByDesc(@RequestParam int id){
-		return this.technologyService.getJobExperienceDetailsWithResumeOrderByDesc(id);
+	@GetMapping("/getTechnologyDetailsWithResumeIdOrderByDesc")
+	public DataResult<List<TechnologyWithResumeDto>> getTechnologyDetailsWithResumeIdOrderByDesc(@RequestParam int id){
+		return this.technologyService.getTechnologyDetailsWithResumeIdOrderByDesc(id);
 	}
 }

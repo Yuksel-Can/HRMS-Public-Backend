@@ -39,16 +39,28 @@ public class JobPostingManager implements JobPostingService{
 	}
 
 	@Override
-	public DataResult<List<JobPosting>> getAllSortedByAndDate() {
+	public DataResult<List<JobPosting>> getAllSortedByAndDateDESC() {
 		Sort sortDesc = Sort.by(Sort.Direction.DESC, "endedDate");
-		return new SuccessDataResult<List<JobPosting>> (this.jobPostiongDao.findAll(sortDesc), "Büyükten küçüğe tarihe göre sıralandı");
+		return new SuccessDataResult<List<JobPosting>> (this.jobPostiongDao.findAll(sortDesc), "Büyükten küçük tarihe göre sıralandı");
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> getAllSortedByAndDateASC() {
+		Sort sortDesc = Sort.by(Sort.Direction.ASC, "endedDate");
+		return new SuccessDataResult<List<JobPosting>> (this.jobPostiongDao.findAll(sortDesc), "küçükten büyük tarihe göre sıralandı");
 	}
 	@Override
 	public DataResult<List<JobPosting>> findByIsVisible(){
 		
-		return new SuccessDataResult<List<JobPosting>> (this.jobPostiongDao.findByIsVisible(true), "Tüm aktif iş ilanları listelendi");
+		return new SuccessDataResult<List<JobPosting>> (this.jobPostiongDao.findByIsVisible(true,Sort.by(Sort.Direction.ASC, "endedDate")), "Tüm aktif iş ilanları küçükten büyüğe listelendi");
 	}
-
+	/*
+	@Override
+	public DataResult<List<JobPosting>> findByOrderByEndedDateAscAndIsVisible(){
+		
+		return new SuccessDataResult<List<JobPosting>> (this.jobPostiongDao.findByIsVisibleAndOrderByEndedDateAsc(true), "Tüm aktif iş ilanları küçükten büyüğelistelendi");
+	}
+*/
 	@Override
 	public DataResult<List<JobPosting>> findByIsVisibleAndEmployer(String companyName) {
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostiongDao.findByIsVisibleAndEmployer_companyName(true, companyName), " Aktif ve İstenilen şirkete göre listelendi");
@@ -65,6 +77,12 @@ public class JobPostingManager implements JobPostingService{
 		jobPosting.setVisible(false);
 		this.jobPostiongDao.save(jobPosting);
 		return new SuccessResult("İlan başarıyla kapatıldı");
+	}
+
+	@Override
+	public DataResult<List<JobPosting>> findByIsVisibleAndWayOfWorking(String wayOfWorking) {
+
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostiongDao.findByIsVisibleAndWayOfWorking(true, wayOfWorking), "İstenilen çalışma türünde, aktif ilanlar listelendi");
 	}
 
 
