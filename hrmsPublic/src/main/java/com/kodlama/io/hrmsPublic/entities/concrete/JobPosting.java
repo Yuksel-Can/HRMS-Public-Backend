@@ -59,7 +59,7 @@ public class JobPosting {
 	@Column(name="open_position")
 	private int openPosition;
 	
-	@JsonIgnore
+	
 	@CreationTimestamp
 	@Column(name="started_date")
 	private Date startedDate;

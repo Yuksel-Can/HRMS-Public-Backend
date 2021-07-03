@@ -18,5 +18,8 @@ public interface JobPostingService {
 	
 	Result isVisibleClose(int id, int employerId);
 	
-	 DataResult<List<JobPosting>> findByIsVisibleAndWayOfWorking(String wayOfWorking);
+	DataResult<List<JobPosting>> findByIsVisibleAndWayOfWorking(String wayOfWorking);
+	DataResult<JobPosting> getById(int id);
+	DataResult<JobPosting> findByIsVisibleAndId(int id);
+
 }

@@ -85,5 +85,16 @@ public class JobPostingManager implements JobPostingService{
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostiongDao.findByIsVisibleAndWayOfWorking(true, wayOfWorking), "İstenilen çalışma türünde, aktif ilanlar listelendi");
 	}
 
+	@Override
+	public DataResult<JobPosting> findByIsVisibleAndId(int id) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<JobPosting>(this.jobPostiongDao.findByIsVisibleAndId(true, id));
+	}
+
+	@Override
+	public DataResult<JobPosting> getById(int id) {
+		return new SuccessDataResult<JobPosting>(this.jobPostiongDao.findById(id));
+	}
+
 
 }

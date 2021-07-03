@@ -16,4 +16,7 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 	 JobPosting findByIdAndEmployer_id(int id, int EmployerId);
 	 List<JobPosting> findByIsVisibleAndWayOfWorking(boolean isVisible, String wayOfWorking);
 	 //List<JobPosting> findByIsVisibleAndOrderByEndedDateAsc(boolean isVisible);
+	 JobPosting findByIsVisibleAndId(boolean isVisible, int id);
+	 JobPosting findById(int id);
+	 
 }
