@@ -9,4 +9,5 @@ import com.kodlama.io.hrmsPublic.entities.concrete.Employer;
 public interface EmployerDao  extends JpaRepository<Employer, Integer>{
 
 	List<Employer> findAllByEmail(String email);
+	Employer findById(int id);
 }

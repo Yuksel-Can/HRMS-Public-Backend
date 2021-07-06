@@ -137,4 +137,9 @@ public class EmployerManager implements EmployerService{
 		}
 		return false;
 	}
+
+	@Override
+	public DataResult<Employer> findById(int id) {
+		return new SuccessDataResult<Employer>(this.employerDao.findById(id), "Aranan işveren listelendi");
+	}
 }
