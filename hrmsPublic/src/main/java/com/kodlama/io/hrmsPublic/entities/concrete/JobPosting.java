@@ -73,8 +73,16 @@ public class JobPosting {
 	private boolean isVisible=false;
 	
 	//update project ( way of working added)
-	@NotBlank(message ="Çalışma biçimi boş bırakılamaz")
-	@Column(name="way_of_working")
-	private String wayOfWorking;
+	//@NotBlank(message ="Çalışma biçimi boş bırakılamaz")
+	//@Column(name="way_of_working")
+	//private String wayOfWorking2;
+	
+	@ManyToOne(targetEntity = WayOfWorking.class)
+	@JoinColumn(name="way_of_working_id", referencedColumnName = "id", nullable=false)
+	private WayOfWorking wayOfWorking;
+	
+	@ManyToOne(targetEntity = WorkingTime.class) 
+	@JoinColumn(name="working_time_id", referencedColumnName = "id", nullable=false)
+	private WorkingTime workingTime;
 
 }
