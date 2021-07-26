@@ -6,4 +6,6 @@
 :point_right: ``` 'HRMSPUBLIC', Java Spring Framework ile geliştirilmiş genel bir web projesidir. Araçlar: Java Spring-Hibernate-Maven-Spring Boot-MVC-RestAPI-JSON-Dev Tools-JPA-AOP-PostgreSQL ```
 
 ## Java
-## Java Spring-Hibernate-Maven-Spring Boot-MVC-RestAPI-JSON-Dev Tools-JPA-AOP
+## Java Spring
+## Hibernate-Maven-Spring Boot-MVC-RestAPI-JSON-Dev Tools-JPA-AOP
+
