@@ -8,5 +8,6 @@
 ## Java
 ## Java Spring
 ## Hibernate
-## Maven-Spring Boot-MVC-RestAPI-JSON-Dev Tools-JPA-AOP
+## Maven
+## Spring Boot-MVC-RestAPI-JSON-Dev Tools-JPA-AOP
 
