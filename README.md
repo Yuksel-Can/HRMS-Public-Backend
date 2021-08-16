@@ -10,6 +10,6 @@
 ## Hibernate
 ## Maven
 ## Spring Boot
-## MVC-RestAPI-JSON-Dev Tools-JPA-AOP
-
+## MVC
+## RestAPI-JSON-Dev Tools-JPA-AOP
 
