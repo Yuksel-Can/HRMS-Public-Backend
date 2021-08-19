@@ -12,5 +12,6 @@
 ## Spring Boot
 ## MVC
 ## RestAPI
-## JSON-Dev Tools-JPA-AOP
+## JSON
+## Dev Tools-JPA-AOP
 
