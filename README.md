@@ -13,5 +13,6 @@
 ## MVC
 ## RestAPI
 ## JSON
-## Dev Tools-JPA-AOP
+## Dev Tools
+## JPA-AOP
 
